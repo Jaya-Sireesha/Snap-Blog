@@ -1,1 +1,1 @@
-# Snap-Blog
+Snap Blog

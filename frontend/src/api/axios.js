@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-const instance = axios.create({
-  baseURL: 'http://localhost:5000/api',  // adjust if your backend runs elsewhere
+const instance = axios.create({ 
+  baseURL: process.env.REACT_APP_API_BASE_URL, // <- YOUR RENDER BACKEND URL
 });
 
+// Attach JWT if present in localStorage
 instance.interceptors.request.use(config => {
   const token = localStorage.getItem('token');
   if (token) {
@@ -11,5 +12,8 @@ instance.interceptors.request.use(config => {
   }
   return config;
 });
+
+// Handle response or error if needed
+// instance.interceptors.response.use(..., ...)
 
 export default instance;
